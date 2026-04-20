@@ -1,0 +1,48 @@
+County,Region,Score_tier,Population,Infrastructure_score,Predicted,Residual,Direction
+baringo,Rift Valley,Bottom third,666763,0.208,0.2081132895585477,-0.0001132895585476,Overestimated
+bomet,Rift Valley,Bottom third,875689,0.173,0.1788153047679588,-0.0058153047679588,Overestimated
+bungoma,Western,Middle third,1670570,0.317,0.3176276014618465,-0.0006276014618465,Overestimated
+busia,Western,Top third,893681,0.455,0.451479166947958,0.003520833052042,Underestimated
+elgeyo-marakwet,Rift Valley,Bottom third,454480,0.222,0.2222576645947911,-0.0002576645947911,Overestimated
+embu,Eastern,Top third,608599,0.568,0.5619501037299354,0.0060498962700645,Underestimated
+garissa,Arid North,Middle third,841353,0.349,0.3486306569875331,0.0003693430124668,Underestimated
+homa bay,Nyanza,Top third,1131950,0.445,0.4425448065199232,0.0024551934800767,Underestimated
+isiolo,Arid North,Middle third,268002,0.293,0.293229572697266,-0.000229572697266,Overestimated
+kajiado,Rift Valley,Middle third,1117840,0.349,0.3506136464719982,-0.0016136464719982,Overestimated
+kakamega,Western,Middle third,1867579,0.289,0.290743648969413,-0.001743648969413,Overestimated
+kericho,Rift Valley,Middle third,901777,0.346,0.3416023319947098,0.0043976680052901,Underestimated
+kiambu,Central,Middle third,2417735,0.347,0.3494570445580905,-0.0024570445580905,Overestimated
+kilifi,Coast,Middle third,1453787,0.282,0.2843618880034833,-0.0023618880034833,Overestimated
+kirinyaga,Central,Top third,610411,0.503,0.5036244494529081,-0.000624449452908,Overestimated
+kisii,Nyanza,Top third,1266860,0.537,0.528340804672863,0.0086591953271369,Underestimated
+kisumu,Nyanza,Top third,1155574,0.492,0.4875622549319924,0.0044377450680075,Underestimated
+kitui,Eastern,Bottom third,1136187,0.219,0.2240930498815055,-0.0050930498815054,Overestimated
+kwale,Coast,Bottom third,866820,0.264,0.2655639470845516,-0.0015639470845516,Overestimated
+laikipia,Rift Valley,Top third,518560,0.418,0.4178112011630548,0.0001887988369451,Underestimated
+lamu,Coast,Middle third,143920,0.301,0.3011425245830566,-0.0001425245830566,Overestimated
+machakos,Eastern,Bottom third,1421932,0.196,0.2027577445769029,-0.0067577445769029,Overestimated
+makueni,Eastern,Bottom third,987653,0.208,0.2136134467416053,-0.0056134467416052,Overestimated
+mandera,Arid North,Top third,867457,0.441,0.4378115255593122,0.0031884744406877,Underestimated
+marsabit,Arid North,Bottom third,459785,0.267,0.2690510128849332,-0.0020510128849332,Overestimated
+meru,Eastern,Bottom third,1545714,0.249,0.2551259825116151,-0.0061259825116151,Overestimated
+migori,Nyanza,Top third,1116436,0.555,0.5482042760478771,0.0067957239521229,Underestimated
+mombasa,Coast,Top third,1208333,0.433,0.43214981285141,0.0008501871485899,Underestimated
+murang'a,Central,Bottom third,1056640,0.27,0.2720219116090231,-0.002021911609023,Overestimated
+nairobi,Nairobi,Top third,4397073,0.49,0.4830670541250518,0.0069329458749481,Underestimated
+nakuru,Rift Valley,Middle third,2162202,0.33,0.3323324425084198,-0.0023324425084197,Overestimated
+nandi,Rift Valley,Bottom third,885711,0.229,0.2283254839852095,0.0006745160147904,Underestimated
+narok,Rift Valley,Bottom third,1157873,0.202,0.2023518744043784,-0.0003518744043783,Overestimated
+nyamira,Nyanza,Top third,605576,0.453,0.4506526005932785,0.0023473994067214,Underestimated
+nyandarua,Central,Bottom third,638289,0.259,0.2622757834490156,-0.0032757834490155,Overestimated
+nyeri,Central,Top third,759164,0.543,0.5424519263390373,0.0005480736609627,Underestimated
+samburu,Rift Valley,Top third,310327,0.496,0.4910778073681943,0.0049221926318057,Underestimated
+siaya,Nyanza,Middle third,993183,0.384,0.3828380788966206,0.0011619211033793,Underestimated
+taita taveta,Coast,Middle third,340671,0.298,0.3004849686961739,-0.0024849686961739,Overestimated
+tana river,Coast,Middle third,315943,0.274,0.2763388638340375,-0.0023388638340374,Overestimated
+tharaka-nithi,Eastern,Top third,393177,0.603,0.5943859895206598,0.0086140104793401,Underestimated
+trans nzoia,Rift Valley,Bottom third,1030206,0.197,0.2014015553161962,-0.0044015553161962,Overestimated
+turkana,Arid North,Middle third,926975,0.323,0.3215753914734084,0.0014246085265915,Underestimated
+uasin gishu,Rift Valley,Middle third,1163186,0.305,0.305286397132615,-0.000286397132615,Overestimated
+vihiga,Western,Top third,590013,0.395,0.395392782025456,-0.000392782025456,Overestimated
+wajir,Arid North,Bottom third,781263,0.228,0.2296322221941911,-0.0016322221941911,Overestimated
+west pokot,Rift Valley,Bottom third,621241,0.147,0.1477810683710084,-0.0007810683710084,Overestimated

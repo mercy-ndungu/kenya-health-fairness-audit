@@ -1,0 +1,9 @@
+Group,Count,MAE,Mean_residual,Bias_direction
+Nairobi,1,0.00693,0.00693,Underestimated
+Eastern,6,0.00638,-0.00149,Overestimated
+Nyanza,6,0.00431,0.00431,Underestimated
+Rift Valley,13,0.00201,-0.00044,Overestimated
+Central,5,0.00179,-0.00157,Overestimated
+Coast,6,0.00162,-0.00134,Overestimated
+Western,4,0.00157,0.00019,Underestimated
+Arid North,6,0.00148,0.00018,Underestimated

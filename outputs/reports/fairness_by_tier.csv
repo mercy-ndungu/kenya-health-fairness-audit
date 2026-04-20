@@ -1,0 +1,4 @@
+Group,Count,MAE,Mean_residual,Bias_direction
+Top third,16,0.00378,0.00366,Underestimated
+Bottom third,16,0.00291,-0.00282,Overestimated
+Middle third,15,0.0016,-0.00062,Overestimated
