@@ -281,7 +281,7 @@ Exploratory analysis and research. To identify which counties appear underserved
 Direct resource allocation decisions without human review. Any use that treats the score as a ground truth measure of health quality.
 
 **TRAINING DATA**
-47 Kenyan counties. Kenya KMHFL data downloaded from open.africa. Data reflects facility registration records — not service quality audits.
+47 Kenyan counties. Kenya KMHFL data downloaded from open.africa. Data reflects facility registration records  not service quality audits.
 
 **PERFORMANCE (Leave-One-Out Cross-Validation)**
 | Model | MAE | RMSE | R² |
@@ -596,11 +596,11 @@ Where each component is normalized to 0-1 using min-max scaling.
 
 ### Required Safeguards
 
-1. **Human-in-the-loop** — County health officers must review all flagged counties
-2. **Community validation** — Residents of high-residual counties should verify findings
-3. **Transparency** — Decision-makers must understand model limitations
-4. **Regular auditing** — Monitor fairness metrics over time
-5. **Clear communication** — Present predictions with uncertainty bounds
+1. **Human-in-the-loop** County health officers must review all flagged counties
+2. **Community validation** Residents of high-residual counties should verify findings
+3. **Transparency** Decision-makers must understand model limitations
+4. **Regular auditing** Monitor fairness metrics over time
+5. **Clear communication** Present predictions with uncertainty bounds
 
 ## Notebook Cell Summary
 
@@ -615,7 +615,7 @@ Where each component is normalized to 0-1 using min-max scaling.
 
 ## Running the Notebooks
 
-**Run in this exact order** — each notebook depends on outputs from the previous one.
+**Run in this exact order** each notebook depends on outputs from the previous one.
 
 ```bash
 # Complete workflow
