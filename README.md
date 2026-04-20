@@ -4,7 +4,7 @@
 
 ### Project Overview
 
-This is a **multi-part HCAI (Human-Centered AI)** research project investigating whether geographic accessibility to health facilities in Kenya reflects **population needs** or **historical infrastructure bias**.
+This is a multi-part HCAI (Human-Centered AI) research project investigating whether geographic accessibility to health facilities in Kenya reflects population needs or historical infrastructure bias.
 
 **Research Questions:**
 
@@ -19,10 +19,10 @@ This is a **multi-part HCAI (Human-Centered AI)** research project investigating
 
 | Phase | Notebook | Focus |
 |-------|----------|-------|
-| 1 | `01_data_cleaning_and_exploration.ipynb` | Data quality assessment and cleaning |
-| 2 | `02_merging_and_enrichment.ipynb` | County aggregation and feature engineering |
-| 3 | `03_modeling.ipynb` | Predictive model development and evaluation |
-| 4 | `04_fairness_and_explainability.ipynb` | Fairness audit and SHAP explainability |
+| 1 | `data_cleaning_and_exploration.ipynb` | Data quality assessment and cleaning |
+| 2 | `merging_and_enrichment.ipynb` | County aggregation and feature engineering |
+| 3 | `modeling.ipynb` | Predictive model development and evaluation |
+| 4 | `fairness_and_explainability.ipynb` | Fairness audit and SHAP explainability |
 
 
 ## Repository Structure
@@ -48,10 +48,10 @@ kenya-health-infrastructure/
 │       └── fairness_audit.csv          # County-level fairness data
 │
 ├── notebooks/
-│   ├── 01_data_cleaning_and_exploration.ipynb
-│   ├── 02_merging_and_enrichment.ipynb
-│   ├── 03_modeling.ipynb
-│   └── 04_fairness_and_explainability.ipynb
+│   ├── data_cleaning_and_exploration.ipynb
+│   ├── merging_and_enrichment.ipynb
+│   ├── modeling.ipynb
+│   └── fairness_and_explainability.ipynb
 │
 ├── outputs/
 │   ├── figures/                # All visualizations from all notebooks
@@ -82,7 +82,7 @@ kenya-health-infrastructure/
 
 ## Data Sources
 
-All data was acquired from **[open.africa](https://open.africa)** , a pan-African open data platform that hosts government and institutional datasets.
+All data was acquired from **[open.africa](https://open.africa/dataset/kenya-master-health-facility-list-2020)** , a pan-African open data platform that hosts government and institutional datasets.
 
 | Dataset | Description | Rows | Key Columns |
 |---------|-------------|------|-------------|
@@ -93,7 +93,7 @@ All data was acquired from **[open.africa](https://open.africa)** , a pan-Africa
 
 **Note:** Raw data files are not included in this repository due to size. Download from open.africa or contact the author.
 
-## Phase 1: Data Cleaning & Exploration (`01_data_cleaning_and_exploration.ipynb`)
+## Phase 1: Data Cleaning & Exploration (`data_cleaning_and_exploration.ipynb`)
 
 ### Overview
 
@@ -293,7 +293,7 @@ Direct resource allocation decisions without human review. Any use that treats t
 1. Only 47 data points. Any model on 47 rows should be treated as exploratory, not conclusive.
 2. The infrastructure score target variable was built by us using equal weights for beds, functionality, and public access. These weights were not validated with health policy experts or affected communities.
 3. Public facility ownership data could not be verified and was excluded. This means the model does not account for how accessible facilities actually are to low-income populations.
-4. The KMHFL reflects registered facilities. Unregistered or informal health infrastructure — which is more common in underserved counties — is entirely invisible to this model.
+4. The KMHFL reflects registered facilities. Unregistered or informal health infrastructure, which is more common in underserved counties and is entirely invisible to this model.
 5. Counties where the model overestimates the infrastructure score are at risk of receiving fewer resources if predictions are used naively.
 
 **WHO SHOULD REVIEW THIS MODEL BEFORE ANY DEPLOYMENT**
@@ -411,7 +411,7 @@ REGION_MAPPING = {
 The model produces very small residuals across all 47 counties. At first glance this looks like strong performance. But this partly reflects the fact that the target variable (Infrastructure Score) was built from the same data the model trains on. Small errors are partly good modelling and partly circular reasoning. Any deployment must acknowledge this.
 
 **FAIRNESS BY REGION**
-The model errors are not evenly distributed. Some regions show consistent overestimation - the model makes them look slightly better than they are. For regions that are already underserved, even small overestimation matters because it reduces the apparent urgency of intervention.
+The model errors are not evenly distributed. Some regions show consistent overestimation where the model makes them look slightly better than they are. For regions that are already underserved, even small overestimation matters because it reduces the apparent urgency of intervention.
 
 **FAIRNESS BY SCORE TIER**
 Counties in the bottom third of the infrastructure score experience different model behaviour from counties in the top third. This is the most important finding for HCAI purposes: the model is least reliable for the counties that need the most attention.
@@ -420,7 +420,7 @@ Counties in the bottom third of the infrastructure score experience different mo
 When we simulated using model predictions to find the 10 most underserved counties, some counties that appear in the actual bottom 10 were missed. A policymaker using predictions instead of actual data would under-allocate resources to those specific counties. That is the most concrete harm pathway from this model.
 
 **WHAT RESPONSIBLE USE LOOKS LIKE**
-Use this model to generate questions, not answers. A county flagged as underserved should trigger a conversation with county health officers - not an automatic resource allocation decision.
+Use this model to generate questions, not answers. A county flagged as underserved should trigger a conversation with county health officers and not an automatic resource allocation decision.
 
 ## Key Findings
 
@@ -580,14 +580,14 @@ Where each component is normalized to 0-1 using min-max scaling.
 
 ## Recommendations for Responsible Use
 
-### ✅ Appropriate Uses
+### Appropriate Uses
 
 - Exploratory analysis and hypothesis generation
 - Identifying counties that warrant deeper investigation
 - Research on relationships between facility metrics and infrastructure
 - Educational use (understanding ML fairness concepts)
 
-### ❌ Inappropriate Uses
+### Inappropriate Uses
 
 - Direct resource allocation without human review
 - Comparing counties across regions without accounting for bias
@@ -621,16 +621,16 @@ Where each component is normalized to 0-1 using min-max scaling.
 # Complete workflow
 
 # Phase 1: Clean raw data and explore patterns
-jupyter notebook notebooks/01_data_cleaning_and_exploration.ipynb
+jupyter notebook notebooks/ata_cleaning_and_exploration.ipynb
 
 # Phase 2: Aggregate to county level and engineer features
-jupyter notebook notebooks/02_merging_and_enrichment.ipynb
+jupyter notebook notebooks/merging_and_enrichment.ipynb
 
 # Phase 3: Train and evaluate predictive models
-jupyter notebook notebooks/03_modeling.ipynb
+jupyter notebook notebooks/modeling.ipynb
 
 # Phase 4: Audit fairness and explain model decisions
-jupyter notebook notebooks/04_fairness_and_explainability.ipynb
+jupyter notebook notebooks/fairness_and_explainability.ipynb
 ```
 
 ## Dependencies
@@ -717,13 +717,13 @@ If models are not performing as expected:
 
 ## Acknowledgments
 
-- Data sourced from [open.africa](https://open.africa/), a platform making African government data accessible
+- Data sourced from [open.africa](https://open.africa/dataset/kenya-master-health-facility-list-2020), a platform making African government data accessible
 - Population data from Kenya National Bureau of Statistics (2019 census)
 - This research was conducted as part of an HCAI (Human-Centered AI) research project examining health infrastructure equity in Kenya
 
 ## References
 
-- Kenya Master Health Facility List (KMHFL): [open.africa](https://open.africa/)
+- Kenya Master Health Facility List (KMHFL): [open.africa](https://open.africa/dataset/kenya-master-health-facility-list-2020)
 - Kenya National Bureau of Statistics: 2019 Population Census
 - SHAP Documentation: [shap.readthedocs.io](https://shap.readthedocs.io/)
 - scikit-learn Documentation: [scikit-learn.org](https://scikit-learn.org/)
