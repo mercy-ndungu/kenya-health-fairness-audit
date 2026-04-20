@@ -320,7 +320,7 @@ This notebook audits the Ridge Regression model for fairness across geographic r
 | **Mean Residual** | Mean (Actual − Predicted) | Negative = overestimation; Positive = underestimation |
 | **Bias Direction** | Sign of mean residual | Identifies systematic bias |
 
-### Region Mapping (47 Counties → 8 Regions)
+### Region Mapping (47 Counties to 8 Regions)
 
 ```python
 REGION_MAPPING = {
@@ -510,7 +510,7 @@ Where each component is normalized to 0-1 using min-max scaling.
 
 ### Key Risk
 
-**Overestimation of underserved counties** → Potential under-allocation of resources to counties that need them most.
+**Overestimation of underserved counties** Potential under-allocation of resources to counties that need them most.
 
 **Mitigation:** Manual review of all bottom-tier predictions before any resource allocation decision.
 
