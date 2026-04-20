@@ -143,7 +143,7 @@ This notebook establishes the data foundation by cleaning individual datasets, a
 | Mixed case county names | Standardized to lowercase |
 
 **Validation:** County sums matched national total (74,283 beds).
-## Phase 2: Merging & Enrichment (`02_merging_and_enrichment.ipynb`)
+## Phase 2: Merging & Enrichment (`merging_and_enrichment.ipynb`)
 
 ### Overview
 
@@ -192,7 +192,7 @@ Where:
 - `Score_functional` = normalized % fully functional (0-1 scale)
 - `Score_public` = Public_facility_ratio (already 0-1)
 
-## Phase 3: Predictive Modeling (`03_modeling.ipynb`)
+## Phase 3: Predictive Modeling (`modeling.ipynb`)
 
 ### Overview
 
@@ -299,7 +299,7 @@ Direct resource allocation decisions without human review. Any use that treats t
 **WHO SHOULD REVIEW THIS MODEL BEFORE ANY DEPLOYMENT**
 County health officers, community health workers, and residents of the counties flagged as high-residual.
 
-## Phase 4: Fairness and Explainability (`04_fairness_and_explainability.ipynb`)
+## Phase 4: Fairness and Explainability (`fairness_and_explainability.ipynb`)
 
 ### Overview
 
