@@ -76,6 +76,13 @@ kenya-health-infrastructure/
 │       ├── fairness_by_region.csv
 │       └── fairness_by_tier.csv
 │
+├── streamlit_app/              # Interactive dashboard
+│   ├── app.py
+│   ├── pages/
+│   ├── utils/
+│   ├── models/
+│   └── requirements_streamlit.txt
+│
 ├── README.md                   # This file
 └── requirements.txt            # Python dependencies
 ```
