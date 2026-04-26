@@ -143,7 +143,7 @@ This notebook establishes the data foundation by cleaning individual datasets, a
 | 'Kenya' summary row included | Removed for county analysis (total preserved) |
 | Mixed case county names | Standardized to lowercase |
 
-**Validation:** County sums matched national total (74,283 beds).
+
 ## Phase 2: Merging & Enrichment (`merging_and_enrichment.ipynb`)
 
 ### Overview
