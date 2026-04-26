@@ -4,12 +4,12 @@
 
 ### Project Overview
 
-97% of pharmacies in Kenya have no verified registration number on record. 10 counties serving 8 million people fall below the WHO minimum for hospital beds. This project asks whether those patterns reflect current population needs or decisions made decades ago that no one has revisited. It then asks what happens when you build a machine learning model on top of data that carries those patterns.
+97% of pharmacies in Kenya have no verified registration number on record. 10 counties serving 8 million people fall below the WHO minimum for hospital beds. This project asks whether those patterns reflect current population needs or decisions made decades ago that no one has revisited. It then asks what happens when you build a machine learning model on data that contains those patterns.
 
 ### The Research Question
 Does geographic accessibility to health facilities in Kenya reflect population needs, or historical infrastructure bias?
 This is not a question about bad data. It is a question about what data cannot see, the unregistered clinics, the community health workers, the informal infrastructure that concentrates in exactly the counties where the formal system is thinnest. It is also a question of what machine learning models learn when trained on records that reflect decades of unequal investment.
-This project works through that question in four phases: cleaning and understanding the raw data, building a county-level picture of health infrastructure across all 47 counties, training predictive models, and then asking whether those models are fair, explainable, and safe to use for decisions that affect real people.
+This project addresses that question in four phases: cleaning and understanding the raw data, building a county-level picture of health infrastructure across all 47 counties, training predictive models, and assessing whether those models are fair, explainable, and safe to use for decisions that affect real people.
 
 
 
@@ -18,15 +18,15 @@ This project works through that question in four phases: cleaning and understand
 *Figure 1. Hospital beds per county in Kenya. Red = under 1,000 beds. Orange = 1,000–2,000. Green = over 2,000. The dashed line is the national average. Ten counties fall below the WHO minimum of 10 beds per 10,000 people.*
 
 ### Findings
-FindingWhat It Means97% of pharmacies have no registration number on recordPharmaceutical regulation is effectively unverifiable at county level10 counties fall below WHO minimum of 10 beds per 10,000 people8 million people live in counties with inadequate inpatient capacity33.7% of health units are not fully operationalFacility counts overstate real capacity — semi-functional facilities look like full onesThe predictive model achieves R² = 0.999Near-perfect accuracy driven by circularity, not genuine insightBottom-tier counties are systematically overestimatedThe model is least reliable for the counties that need the most attention
+Finding What It Means97% of pharmacies have no registration number on record. Pharmaceutical regulation is effectively unverifiable at the county level. 10 counties fall below the WHO minimum of 10 beds per 10,000 people. 8 million people live in counties with inadequate inpatient capacity33.7% of health units are not fully operational. Facility counts overstate real capacity. Semi-functional facilities look like full ones. The predictive model achieves R² = 0.999. Near-perfect accuracy driven by circularity, not genuine insight. Bottom-tier counties are systematically overestimated. The model is least reliable for the counties that need the most attention
 
 ![Fairness audit results by region and score tier.](outputs/figures/fairness_by_group.png)
 
-*Figure 2. Fairness audit results. Left: model error by region — red bars indicate groups the model overestimates. Right: model error by infrastructure score tier — the model is least accurate for counties in the bottom third.*
+*Figure 2. Fairness audit results. Left: model error by region, red bars indicate groups the model overestimates. Right: model error by infrastructure score tier, the model is least accurate for counties in the bottom third.*
 
 Why This Matters for AI
-When a machine learning model is trained on facility distribution data, it learns from what exists — not from what should exist. If historically underinvested counties have thinner records, more missing data, and fewer registered facilities, the model will treat that thinness as a feature of those counties rather than a feature of the system that undercounted them.
-This project is an attempt to make that process visible — to show exactly which features the model relies on, which counties it gets wrong, and what would happen to real resource allocation decisions if someone used its predictions naively.
+When a machine learning model is trained on facility distribution data, it learns from what exists, not from what should exist. If historically underinvested counties have thinner records, more missing data, and fewer registered facilities, the model will treat that thinness as a feature of those counties rather than a feature of the system that undercounted them.
+This project is an attempt to make that process visible, to show exactly which features the model relies on, which counties it gets wrong, and what would happen to real resource allocation decisions if someone used its predictions naively.
 
 **Project Phases:**
 
@@ -157,6 +157,11 @@ This notebook establishes the data foundation by cleaning individual datasets, a
 | Mixed case county names | Standardized to lowercase |
 
 
+
+![Functional status of Kenya's 5,558 health units.](outputs/figures/health_unit_status.png)
+
+*Figure 3. Functional status of Kenya's 5,558 registered health units. 33.7% are operating below full capacity or not at all.*
+
 ## Phase 2: Merging & Enrichment (`merging_and_enrichment.ipynb`)
 
 ### Overview
@@ -205,6 +210,10 @@ Where:
 - `Score_beds` = normalized Beds_per_10k (0-1 scale)
 - `Score_functional` = normalized % fully functional (0-1 scale)
 - `Score_public` = Public_facility_ratio (already 0-1)
+
+![Health infrastructure score by county.](outputs/figures/infrastructure_score_by_county.png)
+
+*Figure 4. Health infrastructure score by county (0 = worst, 1 = best). No county scores above 0.603. The national mean is 0.344. Red = bottom third. Orange = middle third. Green = top third.*
 
 ## Phase 3: Predictive Modeling (`modeling.ipynb`)
 
@@ -263,6 +272,10 @@ This notebook develops and evaluates machine learning models to predict county-l
 | Pct_pharmacies_registered | 0.001 |
 
 Bed availability and facility functionality dominate predictions, accounting for over 95% of explained variance.
+
+![Prediction residuals by county.](outputs/figures/residuals_by_county.png)
+
+*Figure 5. Prediction residuals by county. Red = model overestimated the county (county is worse than predicted). Green = model underestimated (county is better than predicted). Machakos has the largest negative residual.*
 
 ### Residual Analysis Highlights
 
