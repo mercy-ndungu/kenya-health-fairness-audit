@@ -272,17 +272,14 @@ Bed availability and facility functionality dominate predictions, accounting for
 
 ### Model Card
 
-**WHAT THIS MODEL DOES**
-Predicts a county's health infrastructure score (0–1) from seven features derived from the Kenya Master Health Facility List (KMHFL).
+This model predicts a county's health infrastructure score (0–1) from seven features derived from the Kenya Master Health Facility List (KMHFL).
 
-**INTENDED USE**
-Exploratory analysis and research. To identify which counties appear underserved relative to their feature profile, and to surface counties where the model's predictions are unreliable.
+The intended use is exploratory analysis and research. To identify which counties appear underserved relative to their feature profile, and 
+to surface counties where the model's predictions are unreliable.
 
-**NOT INTENDED FOR**
-Direct resource allocation decisions without human review. Any use that treats the score as a ground truth measure of health quality.
+This is not to be used for direct resource allocation decisions without human review. Any use that treats the score as a ground truth measure of health quality.
 
-**TRAINING DATA**
-47 Kenyan counties. Kenya KMHFL data downloaded from open.africa. Data reflects facility registration records  not service quality audits.
+The Kenya KMHFL data  can be downloaded from [open.africa.](https://open.africa/dataset/kenya-master-health-facility-list-2020) The data reflect facility registration records,  not service quality audits.
 
 **PERFORMANCE (Leave-One-Out Cross-Validation)**
 | Model | MAE | RMSE | R² |
