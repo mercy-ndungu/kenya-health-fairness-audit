@@ -288,14 +288,12 @@ The Kenya KMHFL data  can be downloaded from [open.africa.](https://open.africa/
 | Random Forest | 0.0388 | 0.0510 | 0.8180 |
 
 **KNOWN LIMITATIONS**
-1. Only 47 data points. Any model on 47 rows should be treated as exploratory, not conclusive.
+1. Only 47 data points. Any model based on 47 rows should be treated as exploratory rather than conclusive.
 2. The infrastructure score target variable was built by us using equal weights for beds, functionality, and public access. These weights were not validated with health policy experts or affected communities.
 3. Public facility ownership data could not be verified and was excluded. This means the model does not account for how accessible facilities actually are to low-income populations.
-4. The KMHFL reflects registered facilities. Unregistered or informal health infrastructure, which is more common in underserved counties and is entirely invisible to this model.
+4. The KMHFL reflects registered facilities. Unregistered or informal health infrastructure, which is more common in underserved counties, is entirely invisible to this model.
 5. Counties where the model overestimates the infrastructure score are at risk of receiving fewer resources if predictions are used naively.
 
-**WHO SHOULD REVIEW THIS MODEL BEFORE ANY DEPLOYMENT**
-County health officers, community health workers, and residents of the counties flagged as high-residual.
 
 ## Phase 4: Fairness and Explainability (`fairness_and_explainability.ipynb`)
 
@@ -314,8 +312,8 @@ This notebook audits the Ridge Regression model for fairness across geographic r
 
 | Metric | Formula | Interpretation |
 |--------|---------|----------------|
-| **MAE** | Mean \|Actual − Predicted\| | Higher = less accurate for group |
-| **Mean Residual** | Mean (Actual − Predicted) | Negative = overestimation; Positive = underestimation |
+| **MAE** | Mean \|Actual - Predicted\| | Higher = less accurate for group |
+| **Mean Residual** | Mean (Actual - Predicted) | Negative = overestimation; Positive = underestimation |
 | **Bias Direction** | Sign of mean residual | Identifies systematic bias |
 
 ### Region Mapping (47 Counties to 8 Regions)
@@ -370,7 +368,7 @@ REGION_MAPPING = {
 | Western | 4 | 0.00157 | +0.00019 | Underestimated |
 | Arid North | 6 | 0.00148 | +0.00018 | Underestimated |
 
-**Key Finding:** Systematic bias varies by region. Nairobi and Nyanza are underestimated; Eastern, Central, Coast, and Rift Valley are overestimated.
+Systematic bias varies by region. Nairobi and Nyanza are underestimated; Eastern, Central, Coast, and Rift Valley are overestimated.
 
 ### Fairness Results by Score Tier
 
@@ -380,7 +378,7 @@ REGION_MAPPING = {
 | Bottom third | 16 | 0.00291 | -0.00282 | Overestimated |
 | Middle third | 15 | 0.00160 | -0.00062 | Overestimated |
 
-**Critical Finding:** The model is least reliable for the most underserved counties (bottom third), which are systematically overestimated.
+The model is least reliable in the most underserved counties (the bottom third), which are systematically overestimated.
 
 ### SHAP Feature Impact
 
@@ -394,30 +392,35 @@ REGION_MAPPING = {
 | Suspect_zero_bed_count | 0.002 |
 | Pct_pharmacies_registered | 0.001 |
 
-**Interpretation:** The model's decisions are driven almost entirely by bed availability and facility functionality.
+The model's decisions are driven almost entirely by bed availability and facility functionality.
 
 ### Model Blind Spots (Identified via SHAP)
 
-1. **No visibility into informal facilities** — Unregistered health infrastructure is invisible
-2. **No quality metrics** — Only counts and functional status, not service quality
-3. **Missing ownership data** — Public vs. private accessibility unknown
-4. **Registered facilities only** — Undercounts infrastructure in underserved areas
+1. **No visibility into informal facilities:** Unregistered health infrastructure is invisible
+2. **No quality metrics:** Only counts and functional status, not service quality
+3. **Missing ownership data:** Public vs. private accessibility unknown
+4. **Registered facilities only:** Undercounts infrastructure in underserved areas
 
 ### Fairness Audit Summary
 
 **OVERALL FINDING**
+
 The model produces very small residuals across all 47 counties. At first glance this looks like strong performance. But this partly reflects the fact that the target variable (Infrastructure Score) was built from the same data the model trains on. Small errors are partly good modelling and partly circular reasoning. Any deployment must acknowledge this.
 
 **FAIRNESS BY REGION**
+
 The model errors are not evenly distributed. Some regions show consistent overestimation where the model makes them look slightly better than they are. For regions that are already underserved, even small overestimation matters because it reduces the apparent urgency of intervention.
 
 **FAIRNESS BY SCORE TIER**
+
 Counties in the bottom third of the infrastructure score experience different model behaviour from counties in the top third. This is the most important finding for HCAI purposes: the model is least reliable for the counties that need the most attention.
 
 **RESOURCE ALLOCATION RISK**
+
 When we simulated using model predictions to find the 10 most underserved counties, some counties that appear in the actual bottom 10 were missed. A policymaker using predictions instead of actual data would under-allocate resources to those specific counties. That is the most concrete harm pathway from this model.
 
 **WHAT RESPONSIBLE USE LOOKS LIKE**
+
 Use this model to generate questions, not answers. A county flagged as underserved should trigger a conversation with county health officers and not an automatic resource allocation decision.
 
 ## Key Findings
