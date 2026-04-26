@@ -404,23 +404,18 @@ The model's decisions are driven almost entirely by bed availability and facilit
 ### Fairness Audit Summary
 
 **OVERALL FINDING**
-
-The model produces very small residuals across all 47 counties. At first glance this looks like strong performance. But this partly reflects the fact that the target variable (Infrastructure Score) was built from the same data the model trains on. Small errors are partly good modelling and partly circular reasoning. Any deployment must acknowledge this.
+The model produces very small residuals across all 47 counties. At first glance, this looks like a strong performance. But this partly reflects that the target variable (Infrastructure Score) was derived from the same data the model trains on. Small errors are partly good modeling and partly circular reasoning. Any deployment must acknowledge this.
 
 **FAIRNESS BY REGION**
-
 The model errors are not evenly distributed. Some regions show consistent overestimation where the model makes them look slightly better than they are. For regions that are already underserved, even small overestimation matters because it reduces the apparent urgency of intervention.
 
 **FAIRNESS BY SCORE TIER**
-
-Counties in the bottom third of the infrastructure score experience different model behaviour from counties in the top third. This is the most important finding for HCAI purposes: the model is least reliable for the counties that need the most attention.
+Counties in the bottom third of the infrastructure score exhibit different model behavior than those in the top third. This is the most important finding for HCAI purposes: the model is least reliable for the counties that need the most attention.
 
 **RESOURCE ALLOCATION RISK**
-
-When we simulated using model predictions to find the 10 most underserved counties, some counties that appear in the actual bottom 10 were missed. A policymaker using predictions instead of actual data would under-allocate resources to those specific counties. That is the most concrete harm pathway from this model.
+When we simulated using model predictions to identify the 10 most underserved counties, some counties that were actually in the bottom 10 were missed. A policymaker relying on predictions rather than actual data would underallocate resources to those specific counties. That is the most concrete harm pathway from this model.
 
 **WHAT RESPONSIBLE USE LOOKS LIKE**
-
 Use this model to generate questions, not answers. A county flagged as underserved should trigger a conversation with county health officers and not an automatic resource allocation decision.
 
 ## Key Findings
@@ -511,7 +506,7 @@ Where each component is normalized to 0-1 using min-max scaling.
 
 ### Key Risk
 
-**Overestimation of underserved counties** Potential under-allocation of resources to counties that need them most.
+**Overestimation of underserved counties:** Potential under-allocation of resources to counties that need them most.
 
 **Mitigation:** Manual review of all bottom-tier predictions before any resource allocation decision.
 
@@ -554,65 +549,7 @@ Where each component is normalized to 0-1 using min-max scaling.
 | `shap_summary.png` | Phase 4 | SHAP summary dot plot |
 | `shap_bar.png` | Phase 4 | Mean absolute SHAP bar chart |
 
-## Data Dictionary (Final `county_master.csv`)
 
-| Column | Type | Description |
-|--------|------|-------------|
-| County | string | County name (standardized, lowercase) |
-| Total_beds | integer | Official county-level bed count |
-| Total_facilities | integer | All registered facilities in county |
-| closed | integer | Count of closed facilities |
-| fully-functional | integer | Count of fully functional facilities |
-| non-functional | integer | Count of non-functional facilities |
-| semi-functional | integer | Count of semi-functional facilities |
-| Pct_fully_functional | float | Percentage of facilities fully functional |
-| Pct_non_functional | float | Percentage of facilities non-functional |
-| Total_pharmacies | integer | All pharmacy records |
-| Registered_pharmacies | integer | Pharmacies with registration number |
-| Pct_pharmacies_registered | float | Percentage of pharmacies registered |
-| Public_facilities | integer | Count of public facilities |
-| Public_facility_ratio | float | Proportion of public facilities (0-1) |
-| Suspect_zero_bed_count | integer | Inpatient facilities reporting 0 beds |
-| Population | integer | 2019 census population |
-| Beds_per_10k | float | Beds per 10,000 population |
-| Facilities_per_10k | float | Facilities per 10,000 population |
-| Pharmacies_per_10k | float | Pharmacies per 10,000 population |
-| Infrastructure_score | float | Composite score (0-1) |
-
-## Recommendations for Responsible Use
-
-### Appropriate Uses
-
-- Exploratory analysis and hypothesis generation
-- Identifying counties that warrant deeper investigation
-- Research on relationships between facility metrics and infrastructure
-- Educational use (understanding ML fairness concepts)
-
-### Inappropriate Uses
-
-- Direct resource allocation without human review
-- Comparing counties across regions without accounting for bias
-- Any use that treats predictions as ground truth
-- Policy decisions without community consultation
-
-### Required Safeguards
-
-1. **Human-in-the-loop** County health officers must review all flagged counties
-2. **Community validation** Residents of high-residual counties should verify findings
-3. **Transparency** Decision-makers must understand model limitations
-4. **Regular auditing** Monitor fairness metrics over time
-5. **Clear communication** Present predictions with uncertainty bounds
-
-## Notebook Cell Summary
-
-| Notebook | Total Cells | Code Cells | Markdown Cells |
-|----------|-------------|------------|----------------|
-| 01_data_cleaning_and_exploration | ~45 | ~25 | ~20 |
-| 02_merging_and_enrichment | ~50 | ~30 | ~20 |
-| 03_modeling | ~25 | ~18 | ~7 |
-| 04_fairness_and_explainability | ~18 | ~14 | ~4 |
-
-*Note: Cell counts are approximate; actual numbers may vary slightly based on version.*
 
 ## Running the Notebooks
 
@@ -689,16 +626,6 @@ background = shap.sample(X_scaled, 100)  # Use 100 samples instead of all 47
 explainer = shap.TreeExplainer(rf_model, background)
 ```
 
-### Missing Directories
-
-```python
-# Create output directories if they don't exist
-import os
-os.makedirs('../outputs/figures', exist_ok=True)
-os.makedirs('../outputs/reports', exist_ok=True)
-os.makedirs('../data/processed', exist_ok=True)
-```
-
 ### Model Performance Concerns
 
 If models are not performing as expected:
@@ -708,19 +635,6 @@ If models are not performing as expected:
 3. **Check LOOCV implementation**: Confirm train/test splits are correct
 4. **Review feature engineering**: Ensure per-capita metrics were calculated correctly
 
-## Version History
-
-| Version | Date | Changes |
-|---------|------|---------|
-| 1.0 | 2025-04-20 | Initial release: Data cleaning, merging, modeling, fairness audit |
-
----
-
-## Acknowledgments
-
-- Data sourced from [open.africa](https://open.africa/dataset/kenya-master-health-facility-list-2020), a platform making African government data accessible
-- Population data from Kenya National Bureau of Statistics (2019 census)
-- This research was conducted as part of an HCAI (Human-Centered AI) research project examining health infrastructure equity in Kenya
 
 ## References
 
