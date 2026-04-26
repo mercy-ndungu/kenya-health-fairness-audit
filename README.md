@@ -91,7 +91,6 @@ All data was acquired from **[open.africa](https://open.africa/dataset/kenya-mas
 | `hospitals_and_beds.csv` | Facility-level bed and operational data | 12,394 | Code, Name, Beds, Owner type, Keph level, Operational status |
 | `pharmacies.csv` | Pharmacy registry with regulatory information | 5,219 | Code, Name, Registration_number, Regulatory body, Owner |
 
-**Note:** Raw data files are not included in this repository due to size. Download from open.africa or contact the author.
 
 ## Phase 1: Data Cleaning & Exploration (`data_cleaning_and_exploration.ipynb`)
 
