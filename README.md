@@ -18,15 +18,15 @@ This project addresses that question in four phases: cleaning and understanding 
 *Figure 1. Hospital beds per county in Kenya. Red = under 1,000 beds. Orange = 1,000–2,000. Green = over 2,000. The dashed line is the national average. Ten counties fall below the WHO minimum of 10 beds per 10,000 people.*
 
 ### Findings
-Finding What It Means97% of pharmacies have no registration number on record. Pharmaceutical regulation is effectively unverifiable at the county level. 10 counties fall below the WHO minimum of 10 beds per 10,000 people. 8 million people live in counties with inadequate inpatient capacity33.7% of health units are not fully operational. Facility counts overstate real capacity. Semi-functional facilities look like full ones. The predictive model achieves R² = 0.999. Near-perfect accuracy driven by circularity, not genuine insight. Bottom-tier counties are systematically overestimated. The model is least reliable for the counties that need the most attention
+97% of pharmacies have no registration number on record. Pharmaceutical regulation is effectively unverifiable at the county level. 10 counties fall below the WHO minimum of 10 beds per 10,000 people. 8 million people live in counties with inadequate inpatient capacity33.7% of health units are not fully operational. Facility counts overstate real capacity. Semi-functional facilities look like full ones. The predictive model achieves R² = 0.999. Near-perfect accuracy driven by circularity, not genuine insight. Bottom-tier counties are systematically overestimated. The model is least reliable for the counties that need the most attention
 
 ![Fairness audit results by region and score tier.](outputs/figures/fairness_by_group.png)
 
 *Figure 2. Fairness audit results. Left: model error by region, red bars indicate groups the model overestimates. Right: model error by infrastructure score tier, the model is least accurate for counties in the bottom third.*
 
-Why This Matters for AI
+### Why This Matters for AI
 When a machine learning model is trained on facility distribution data, it learns from what exists, not from what should exist. If historically underinvested counties have thinner records, more missing data, and fewer registered facilities, the model will treat that thinness as a feature of those counties rather than a feature of the system that undercounted them.
-This project is an attempt to make that process visible, to show exactly which features the model relies on, which counties it gets wrong, and what would happen to real resource allocation decisions if someone used its predictions naively.
+This project makes that process visible, to show exactly which features the model relies on, which counties it gets wrong, and what would happen to real resource allocation decisions if someone used its predictions naively.
 
 **Project Phases:**
 
