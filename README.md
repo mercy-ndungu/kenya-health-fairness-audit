@@ -9,13 +9,24 @@
 ### The Research Question
 Does geographic accessibility to health facilities in Kenya reflect population needs, or historical infrastructure bias?
 This is not a question about bad data. It is a question about what data cannot see, the unregistered clinics, the community health workers, the informal infrastructure that concentrates in exactly the counties where the formal system is thinnest. It is also a question of what machine learning models learn when trained on records that reflect decades of unequal investment.
-This project works through that question in four phases: cleaning and understanding the raw data, building a county-level picture of health infrastructure across all 47 counties, training predictive models, and then asking — honestly — whether those models are fair, explainable, and safe to use for decisions that affect real people.
+This project works through that question in four phases: cleaning and understanding the raw data, building a county-level picture of health infrastructure across all 47 counties, training predictive models, and then asking whether those models are fair, explainable, and safe to use for decisions that affect real people.
 
 
 
 ![Hospital beds per county in Kenya. Red bars indicate counties below 1,000 total beds. The dashed line shows the national average.](outputs/figures/beds_per_county.png)
 
 *Figure 1. Hospital beds per county in Kenya. Red = under 1,000 beds. Orange = 1,000–2,000. Green = over 2,000. The dashed line is the national average. Ten counties fall below the WHO minimum of 10 beds per 10,000 people.*
+
+### Findings
+FindingWhat It Means97% of pharmacies have no registration number on recordPharmaceutical regulation is effectively unverifiable at county level10 counties fall below WHO minimum of 10 beds per 10,000 people8 million people live in counties with inadequate inpatient capacity33.7% of health units are not fully operationalFacility counts overstate real capacity — semi-functional facilities look like full onesThe predictive model achieves R² = 0.999Near-perfect accuracy driven by circularity, not genuine insightBottom-tier counties are systematically overestimatedThe model is least reliable for the counties that need the most attention
+
+![Fairness audit results by region and score tier.](outputs/figures/fairness_by_group.png)
+
+*Figure 2. Fairness audit results. Left: model error by region — red bars indicate groups the model overestimates. Right: model error by infrastructure score tier — the model is least accurate for counties in the bottom third.*
+
+Why This Matters for AI
+When a machine learning model is trained on facility distribution data, it learns from what exists — not from what should exist. If historically underinvested counties have thinner records, more missing data, and fewer registered facilities, the model will treat that thinness as a feature of those counties rather than a feature of the system that undercounted them.
+This project is an attempt to make that process visible — to show exactly which features the model relies on, which counties it gets wrong, and what would happen to real resource allocation decisions if someone used its predictions naively.
 
 **Project Phases:**
 
