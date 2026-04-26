@@ -4,16 +4,18 @@
 
 ### Project Overview
 
-This is a multi-part HCAI (Human-Centered AI) research project investigating whether geographic accessibility to health facilities in Kenya reflects population needs or historical infrastructure bias.
+97% of pharmacies in Kenya have no verified registration number on record. 10 counties serving 8 million people fall below the WHO minimum for hospital beds. This project asks whether those patterns reflect current population needs or decisions made decades ago that no one has revisited. It then asks what happens when you build a machine learning model on top of data that carries those patterns.
 
-**Research Questions:**
+### The Research Question
+Does geographic accessibility to health facilities in Kenya reflect population needs, or historical infrastructure bias?
+This is not a question about bad data. It is a question about what data cannot see, the unregistered clinics, the community health workers, the informal infrastructure that concentrates in exactly the counties where the formal system is thinnest. It is also a question of what machine learning models learn when trained on records that reflect decades of unequal investment.
+This project works through that question in four phases: cleaning and understanding the raw data, building a county-level picture of health infrastructure across all 47 counties, training predictive models, and then asking — honestly — whether those models are fair, explainable, and safe to use for decisions that affect real people.
 
-1. What is the current state of Kenya's health facility data quality?
-2. How can disparate datasets be integrated into a unified county-level view?
-3. What patterns emerge in the geographic distribution of health infrastructure?
-4. Can we accurately predict infrastructure scores from facility metrics?
-5. Do predictive models exhibit systematic bias across regions or infrastructure tiers?
-6. What are the risks of using such models for resource allocation?
+
+
+![Hospital beds per county in Kenya. Red bars indicate counties below 1,000 total beds. The dashed line shows the national average.](outputs/figures/beds_per_county.png)
+
+*Figure 1. Hospital beds per county in Kenya. Red = under 1,000 beds. Orange = 1,000–2,000. Green = over 2,000. The dashed line is the national average. Ten counties fall below the WHO minimum of 10 beds per 10,000 people.*
 
 **Project Phases:**
 
@@ -642,9 +644,12 @@ If models are not performing as expected:
 - Kenya National Bureau of Statistics: 2019 Population Census
 - SHAP Documentation: [shap.readthedocs.io](https://shap.readthedocs.io/)
 - scikit-learn Documentation: [scikit-learn.org](https://scikit-learn.org/)
+- SHAP Documentation: shap.readthedocs.io
+- Barocas, S., Hardt, M., & Narayanan, A. Fairness and Machine Learning. fairmlbook.org
+- Lundberg, S. M., & Lee, S. I. (2017). A unified approach to interpreting model predictions. NeurIPS.
 
 
 ## License
 
-**Data License:** The KMHFL data is provided by open.africa under their terms of use. Please refer to open.africa for data licensing information.
+**Data License:** The KMHFL data is provided by open.africa under their terms of use. Please refer to open.africa for data licensing information. Code in this repository is MIT licensed.
 
