@@ -111,7 +111,7 @@ This notebook establishes the data foundation by cleaning individual datasets, a
 | Mixed case in location columns | Standardized to lowercase |
 | Duplicate facilities | Removed based on unique Code |
 
-**Key finding:** No missing values in any column - excellent completeness.
+
 
 #### 2. Pharmacies
 
@@ -122,7 +122,7 @@ This notebook establishes the data foundation by cleaning individual datasets, a
 | Yes/No columns as strings | Converted to boolean (True/False) |
 | Mixed case county names | Standardized to lowercase |
 
-**Key finding:** Registration data quality is poor (only 3% registered) - indicates record-keeping shortcomings.
+
 
 #### 3. Hospitals and Beds
 
@@ -134,7 +134,7 @@ This notebook establishes the data foundation by cleaning individual datasets, a
 | Service_names empty | Dropped column |
 | Yes/No columns as strings | Converted to boolean |
 
-**Key finding:** 606 inpatient facilities report zero beds - likely data entry errors, not true zeros.
+
 
 #### 4. County Beds
 
