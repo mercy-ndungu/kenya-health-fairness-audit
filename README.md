@@ -249,7 +249,7 @@ This notebook develops and evaluates machine learning models to predict county-l
 | Suspect_zero_bed_count | 0.002 |
 | Pct_pharmacies_registered | 0.001 |
 
-**Interpretation:** Bed availability and facility functionality dominate predictions, accounting for over 95% of explained variance.
+Bed availability and facility functionality dominate predictions, accounting for over 95% of explained variance.
 
 ### Residual Analysis Highlights
 
